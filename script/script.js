@@ -62,14 +62,17 @@ console.log(rgbString);
 // Функция с товарами
 console.log('Функция с товарами')
 function getFormatedString(count = 0){
-    let temp = count.toString()
-    let symbolsArray = temp.split('');
-    for (let i = 0; i < symbolsArray.length; i++){
-        if (symbolsArray[i] !== '1'){
-            return symbolsArray[i] + ' - Товара'
+    let number = count.toString().split('')
+    number = number.map(Number);
+    for (let i = 0; i < number.length; i++){
+        if (number[i] >= 5 && number[i] <= 20){
+            return number[i] + ' - Товаров'
         }
-        else if (symbolsArray[i] === '1'){
-            return symbolsArray[i] + ' - Товар'
+        if (number[i] >= 2 && number[i] <= 4){
+            return number[i] + ' - Товара'
+        }
+        else if (number[i] === 1){
+            return number[i] + ' - Товар'
         }
     }
 }
