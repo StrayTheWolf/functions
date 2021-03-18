@@ -18,7 +18,11 @@ console.log(power);
 console.log('Повторение строк')
 
 function repeat(str, n = 2) {
-    return str.repeat(n);
+    let result = '';
+    for (let i = 0; i < n; i++) {
+        result += str + ' ';
+    }
+    return result;
 }
 
 let stringRepeat = repeat('hello', 5);
@@ -31,9 +35,8 @@ console.log('Меньшее из чисел')
 function min(a, b) {
     if (a > b) {
         return b;
-    } else {
-        return a
     }
+    return a;
 }
 
 let minNumber = min(10, 15)
@@ -43,16 +46,19 @@ console.log(minNumber);
 console.log('Наибольшее числов в массиве')
 
 function maxArrayNumber(arr) {
-    let largestNumber = 0;
+    let largestNumber = arr[0];
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] > largestNumber) {
-            largestNumber = arr[i];
+            largestNumber = arr[i]
+            if (arr[i] <= arr[i + 1]) {
+                break;
+            }
         }
     }
     return largestNumber;
 }
 
-let maxValue = maxArrayNumber([2, 4, 6, 8, 7, 8, 5, 2, 10, 12, 20, 1]);
+let maxValue = maxArrayNumber([-1, -2, -1, -3, -4]);
 console.log(maxValue);
 
 //Функция RGB
@@ -70,28 +76,28 @@ console.log(rgbString);
 console.log('Функция с товарами')
 
 function getFormatedString(count = 0) {
-    let exitNumber = 0;
+    let result = 0;
     let number = count.toString().split('')
-    number = number.map(Number);
-    console.log(number)
-    console.log(number.length)
-    for (let i = 0; i < number.length; i++) {
-        if (number[i] >= 5 && number[i] <= 20) {
-            exitNumber = number[i] + ' - Товаров'
-        }
-        if (number[i] >= 2 && number[i] <= 4) {
-            exitNumber = number[i] + ' - Товара'
-        }
-        if (number[i] === 1) {
-            exitNumber = number[i] + ' - Товар'
-        }
+    let lastDigitArr = number.slice(-1);
+    let lastDigit = Number(lastDigitArr[lastDigitArr.length - 1]) // тут последний элемент массива преорбразуется из строки в число и кладется в переменную
+
+    let exitNumber = number.join('')
+
+    if (lastDigit >= 5 && lastDigit <= 20) {
+        result = exitNumber + ' - Товаров'
     }
-    return exitNumber;
+    if (lastDigit >= 2 && lastDigit <= 4) {
+        result = exitNumber + ' - Товара'
+    }
+    if (lastDigit === 1) {
+        result = exitNumber + ' - Товар'
+    }
+
+    return result;
 }
 
-let goods = getFormatedString(14);
+let goods = getFormatedString(42);
 console.log(goods);
-
 
 // Функция последоовательность
 console.log('Функция последоовательность')
