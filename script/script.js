@@ -5,9 +5,11 @@ console.log('Возведение в степень')
 
 function pow(x, n) {
     let result = 1;
+
     for (let i = 0; i < n; i++) {
         result *= x;
     }
+
     return result;
 }
 
@@ -19,9 +21,11 @@ console.log('Повторение строк')
 
 function repeat(str, n = 2) {
     let result = '';
+
     for (let i = 0; i < n; i++) {
         result += str + ' ';
     }
+
     return result;
 }
 
@@ -32,7 +36,8 @@ console.log(stringRepeat);
 //Меньшее из чисел
 console.log('Меньшее из чисел')
 
-function min(a, b) {
+function min(a, b)
+{
     if (a > b) {
         return b;
     }
@@ -46,19 +51,22 @@ console.log(minNumber);
 console.log('Наибольшее числов в массиве')
 
 function maxArrayNumber(arr) {
-    let largestNumber = arr[0];
+    let firstElement = arr[0];
+    let maxElement = 0
+
     for (let i = 0; i < arr.length; i++) {
-        if (arr[i] > largestNumber) {
-            largestNumber = arr[i]
-            if (arr[i] <= arr[i + 1]) {
+        if (arr[i] > firstElement) {
+            maxElement = arr[i]
+            if (arr[i] >= arr[i + 1]) {
                 break;
             }
         }
     }
-    return largestNumber;
+
+    return maxElement;
 }
 
-let maxValue = maxArrayNumber([-1, -2, -1, -3, -4]);
+let maxValue = maxArrayNumber([0, -3, -2, -7]);
 console.log(maxValue);
 
 //Функция RGB
@@ -86,9 +94,11 @@ function getFormatedString(count = 0) {
     if (lastDigit >= 5 && lastDigit <= 20) {
         result = exitNumber + ' - Товаров'
     }
+
     if (lastDigit >= 2 && lastDigit <= 4) {
         result = exitNumber + ' - Товара'
     }
+
     if (lastDigit === 1) {
         result = exitNumber + ' - Товар'
     }
@@ -104,6 +114,7 @@ console.log('Функция последоовательность')
 
 function sequence(start, step = 1) {
     let number = start;
+
     return function () {
         let returnValue = number;
         number += step;
@@ -124,6 +135,7 @@ console.log('Работа со строками')
 
 function changeLetterCamel(str) {
     let text = '';
+
     for (let i = 0; i < str.length; i++) {
         if (str[i] === str[i].toLowerCase()) {
             text += str[i].toUpperCase();
@@ -131,6 +143,7 @@ function changeLetterCamel(str) {
             text += str[i].toLowerCase();
         }
     }
+
     return text;
 }
 
